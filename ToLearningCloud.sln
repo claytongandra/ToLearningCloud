@@ -23,6 +23,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToLearningCloud.Infra.Data"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToLearningCloud.Application", "ToLearningCloud.Application\ToLearningCloud.Application.csproj", "{9EECAEAB-0FAD-4C6B-A3EF-567BCD5030C0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToLearningCloud.Infra.CrossCutting.IoC", "ToLearningCloud.Infra.CrossCutting.IoC\ToLearningCloud.Infra.CrossCutting.IoC.csproj", "{477E5493-6A4F-436F-AAD1-D8A99D4F7713}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{9EECAEAB-0FAD-4C6B-A3EF-567BCD5030C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9EECAEAB-0FAD-4C6B-A3EF-567BCD5030C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9EECAEAB-0FAD-4C6B-A3EF-567BCD5030C0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{477E5493-6A4F-436F-AAD1-D8A99D4F7713}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{477E5493-6A4F-436F-AAD1-D8A99D4F7713}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{477E5493-6A4F-436F-AAD1-D8A99D4F7713}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{477E5493-6A4F-436F-AAD1-D8A99D4F7713}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -56,6 +62,7 @@ Global
 		{7234D7F4-7F27-49E6-B5EC-EEEEEBE1A29E} = {6A41AF39-BDAA-4E0E-B50A-72F52B41069D}
 		{33FCBCF4-528C-48FE-B9A2-9237ECA18617} = {D08E732C-4C96-4BE7-9324-8707FC15939C}
 		{9EECAEAB-0FAD-4C6B-A3EF-567BCD5030C0} = {62805DB9-2B2C-4D2A-8525-788867B9757D}
+		{477E5493-6A4F-436F-AAD1-D8A99D4F7713} = {D059E94C-D7C6-42AD-BB9C-D1DED8501B60}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {34B98942-AF0B-4FD7-A59A-49A36761E58C}

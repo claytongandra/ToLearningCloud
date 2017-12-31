@@ -1,0 +1,118 @@
+﻿@model ToLearningCloud.UI.Site.Areas.Admin.ViewModels.AulaViewModel
+
+@{
+    ViewBag.Title = "Excluir Aula";
+}
+
+<h1>Excluir Aula <small>Tem certeza que gostaria de excluir essa aula?</small> </h1>
+
+<div>
+    <h4>AulaViewModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Aula_Titulo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Aula_Titulo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Aula_TipoConteudo)
+        </dt>
+
+        <dd>
+            @if (Model.Aula_TipoConteudo == "V")
+            {
+                <span>Videoaula</span>
+            }
+            else if (Model.Aula_TipoConteudo == "E")
+            {
+                <span>Aula Escrita</span>
+            }
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Aula_Descricao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Aula_Descricao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Aula_Prerequisitos)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Aula_Prerequisitos)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Aula_Imagem)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Aula_Imagem)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Aula_TempoVideo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Aula_TempoVideo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Aula_Video)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Aula_Video)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Aula_ConteudoEscrito)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Aula_ConteudoEscrito)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Aula_Status)
+        </dt>
+
+        <dd>
+            @if (Model.Aula_Status == "A")
+            {
+                <span>Ativo</span>
+            }
+            else if (Model.Aula_Status == "I")
+            {
+                <span>Inativo</span>
+            }
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Aula_CodigoAssinaturaNivel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Aula_AssinaturaNivel.AssinaturaNivel_Titulo)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Excluir" class="btn btn-default" /> <label>|</label>
+            @Html.ActionLink("Voltar", "Index", new { page = ViewBag.page })
+        </div>
+    }
+</div>

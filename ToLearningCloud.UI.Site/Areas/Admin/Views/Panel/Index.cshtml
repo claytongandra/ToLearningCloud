@@ -1,0 +1,17 @@
+﻿@{
+    ViewBag.Title = "Painel Administrativo";
+}
+
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <ul class="nav navbar-nav">
+            <li><a href="@Url.Action("Index", "Aula", new { Area = "Admin" })"><i class="fa fa-file-video-o">&nbsp;&nbsp;</i>Aulas</a></li>
+            <li><a href="@Url.Action("Index", "RolesAdmin", new { Area = "Admin" })"><i class="fa fa-file-video-o">&nbsp;&nbsp;</i>Papéis no Sistema</a></li>
+        </ul>
+    </div>
+</nav>
+<div class="jumbotron">
+    <h1>Painel Administrativo</h1>
+    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
+
+</div>

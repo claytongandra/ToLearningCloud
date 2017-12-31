@@ -32,12 +32,18 @@
   <ItemGroup>
     <Compile Include="Entities\AssinaturaNivel.cs" />
     <Compile Include="Entities\Aula.cs" />
+    <Compile Include="Interfaces\Repositories\IAssinaturaNivelRepository.cs" />
+    <Compile Include="Interfaces\Repositories\IAulaRepository.cs" />
+    <Compile Include="Interfaces\Repositories\IRepositoryBase.cs" />
+    <Compile Include="Interfaces\Repositories\IUnitOfWorkRepository.cs" />
+    <Compile Include="Interfaces\Services\IAssinaturaNivelService.cs" />
+    <Compile Include="Interfaces\Services\IAulaService.cs" />
+    <Compile Include="Interfaces\Services\IServiceBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\AssinaturaNivelService.cs" />
+    <Compile Include="Services\AulaService.cs" />
+    <Compile Include="Services\ServiceBase.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Interfaces\Repositories\" />
-    <Folder Include="Interfaces\Services\" />
-    <Folder Include="Services\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

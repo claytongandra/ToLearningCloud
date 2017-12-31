@@ -1,0 +1,107 @@
+﻿@model IPagedList<ToLearningCloud.UI.Site.Areas.Admin.ViewModels.AulaViewModel>
+@using PagedList;
+@using PagedList.Mvc;
+@using ToLearningCloud.UI.Site.HtmlHelpers;
+
+@{
+    ViewBag.Title = "Consultar Aulas";
+    string classeCssInativo = "";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Nova Aula", "Create", new { page = ViewBag.page })
+</p>
+<table class="table table-condensed table-striped">
+    <tr>
+        <th>Título</th>
+        <th>Tipo Conteúdo</th>
+        <th>Descrição</th>
+        <th>Pré-requisitos</th>
+        <th>Imagem</th>
+        <th>Tempo do Vídeo</th>
+        <th>Vídeo</th>
+        <th>Conteúdo da Aula</th>
+        <th>Status</th>
+        <th>Disponível a partir de</th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        classeCssInativo = "";
+
+        if (item.Aula_Status == "I")
+        {
+            classeCssInativo = "warning";
+        }
+
+        <tr class="@classeCssInativo">
+            <td>
+                @Html.DisplayFor(modelItem => item.Aula_Titulo)
+            </td>
+            <td>
+                @if (item.Aula_TipoConteudo == "V")
+                {
+                    <span>Videoaula </span>
+                }
+                else if (item.Aula_TipoConteudo == "E")
+                {
+                    <span>Aula Escrita</span>
+                }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Aula_Descricao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Aula_Prerequisitos)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Aula_Imagem)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Aula_TempoVideo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Aula_Video)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Aula_ConteudoEscrito)
+            </td>
+            <td>
+                @if (item.Aula_Status == "A")
+                {
+                    <span>Ativo</span>
+                }
+                else if (item.Aula_Status == "I")
+                {
+                    <span>Inativo</span>
+                }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Aula_AssinaturaNivel.AssinaturaNivel_Titulo)
+            </td>
+            <td>
+                @Html.ActionLink("Alterar", "Edit", new { id = item.Aula_Id, page = Model.PageNumber }) <label>|</label>
+                @Html.ActionLink("Detalhes", "Details", new { id = item.Aula_Id, page = Model.PageNumber, titulo = item.Aula_Titulo.ToSeoUrl() }) <label>|</label>
+                @*@Html.ActionLink("Detalhes", "Details", new { id = item.Aula_Id, page = Model.PageNumber }) <label>|</label>*@
+                @Html.ActionLink("Excluir", "Delete", new { id = item.Aula_Id, page = Model.PageNumber })
+                @if (item.Aula_Status == "A")
+                {
+                    <label>|</label>  @Html.ActionLink("Inativar", "Inactivate", new { id = item.Aula_Id, page = Model.PageNumber })
+                }
+                else if (item.Aula_Status == "I")
+                {
+                    <label>|</label>  @Html.ActionLink("Ativar", "Activate", new { id = item.Aula_Id, page = Model.PageNumber })
+                }
+            </td>
+        </tr>
+    }
+
+</table>
+<div class="row" style=" text-align:center">
+    <div class="col-md-12">
+        @Html.PagedListPager(Model, page => Url.Action("Index", "Aula", new { page }))
+    </div>
+</div>

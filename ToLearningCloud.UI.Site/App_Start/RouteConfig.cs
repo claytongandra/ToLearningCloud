@@ -13,10 +13,14 @@ namespace ToLearningCloud.UI.Site
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            routes.MapMvcAttributeRoutes();
+            AreaRegistration.RegisterAllAreas();
+
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },
+                namespaces: new[] { "ToLearningCloud.UI.Site.Controllers" }
             );
         }
     }

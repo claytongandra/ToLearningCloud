@@ -11,7 +11,7 @@ namespace ToLearningCloud.Infra.Data.Context
         public ToLearningCloudContext()
             : base("ToLearningCloud")
         {
-
+            bool instanceExists = System.Data.Entity.SqlServer.SqlProviderServices.Instance != null;
         }
 
         public DbSet<Aula> Aulas { get; set; }
