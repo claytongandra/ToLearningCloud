@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26730.3
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0 - Presentation", "0 - Presentation", "{44EEE993-DCF7-4A50-B12F-CF328CCDB8C1}"
 EndProject
@@ -24,6 +24,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToLearningCloud.Application", "ToLearningCloud.Application\ToLearningCloud.Application.csproj", "{9EECAEAB-0FAD-4C6B-A3EF-567BCD5030C0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToLearningCloud.Infra.CrossCutting.IoC", "ToLearningCloud.Infra.CrossCutting.IoC\ToLearningCloud.Infra.CrossCutting.IoC.csproj", "{477E5493-6A4F-436F-AAD1-D8A99D4F7713}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToLearningCloud.Infra.CrossCutting.Identity", "ToLearningCloud.Infra.CrossCutting.Identity\ToLearningCloud.Infra.CrossCutting.Identity.csproj", "{4267E23C-98A3-426E-AE7A-EA61C258A840}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{477E5493-6A4F-436F-AAD1-D8A99D4F7713}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{477E5493-6A4F-436F-AAD1-D8A99D4F7713}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{477E5493-6A4F-436F-AAD1-D8A99D4F7713}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4267E23C-98A3-426E-AE7A-EA61C258A840}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4267E23C-98A3-426E-AE7A-EA61C258A840}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4267E23C-98A3-426E-AE7A-EA61C258A840}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4267E23C-98A3-426E-AE7A-EA61C258A840}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -63,6 +69,7 @@ Global
 		{33FCBCF4-528C-48FE-B9A2-9237ECA18617} = {D08E732C-4C96-4BE7-9324-8707FC15939C}
 		{9EECAEAB-0FAD-4C6B-A3EF-567BCD5030C0} = {62805DB9-2B2C-4D2A-8525-788867B9757D}
 		{477E5493-6A4F-436F-AAD1-D8A99D4F7713} = {D059E94C-D7C6-42AD-BB9C-D1DED8501B60}
+		{4267E23C-98A3-426E-AE7A-EA61C258A840} = {D059E94C-D7C6-42AD-BB9C-D1DED8501B60}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {34B98942-AF0B-4FD7-A59A-49A36761E58C}

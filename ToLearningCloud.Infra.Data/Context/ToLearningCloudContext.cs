@@ -35,6 +35,8 @@ namespace ToLearningCloud.Infra.Data.Context
 
             modelBuilder.Configurations.Add(new AulaConfiguration());
             modelBuilder.Configurations.Add(new AssinaturaNivelConfiguration());
+            //modelBuilder.Configurations.Add(new RolesConfiguration());
+            //modelBuilder.Configurations.Add(new UsuarioRoleConfiguration());
 
         }
 

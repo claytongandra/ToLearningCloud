@@ -45,8 +45,8 @@
     <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Portable.CommonServiceLocator.1.2.2\lib\net35\Microsoft.Practices.ServiceLocation.dll</HintPath>
     </Reference>
-    <Reference Include="SimpleInjector, Version=2.8.0.0, Culture=neutral, PublicKeyToken=984cb50dea722e99, processorArchitecture=MSIL">
-      <HintPath>..\packages\SimpleInjector.2.8.0\lib\net45\SimpleInjector.dll</HintPath>
+    <Reference Include="SimpleInjector, Version=4.0.12.0, Culture=neutral, PublicKeyToken=984cb50dea722e99, processorArchitecture=MSIL">
+      <HintPath>..\packages\SimpleInjector.4.0.12\lib\net45\SimpleInjector.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -60,16 +60,28 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Context\ClaimsRolesNewLearningCloudContext.cs" />
+    <Compile Include="Context\IdentityIsolationContext.cs" />
     <Compile Include="Context\ToLearningCloudContext.cs" />
+    <Compile Include="Context\UsuarioToLearningCloudContext.cs" />
     <Compile Include="EntitiesConfig\AssinaturaNivelConfiguration.cs" />
     <Compile Include="EntitiesConfig\AulaConfiguration.cs" />
+    <Compile Include="EntitiesConfig\RolesConfiguration.cs" />
+    <Compile Include="EntitiesConfig\UsuarioAcessoConfiguration.cs" />
+    <Compile Include="EntitiesConfig\UsuarioConfig.cs" />
+    <Compile Include="EntitiesConfig\UsuarioConfiguration.cs" />
+    <Compile Include="EntitiesConfig\UsuarioRoleConfiguration.cs" />
     <Compile Include="EntityFramework\ContextManager.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\AssinaturaNivelRepository.cs" />
     <Compile Include="Repositories\AulaRepository.cs" />
+    <Compile Include="Repositories\RoleRepository.cs" />
     <Compile Include="Repositories\UnitOfWorkRepository.cs" />
     <Compile Include="Repositories\RepositoryBase.cs" />
+    <Compile Include="Repositories\UsuarioAcessoRepository.cs" />
+    <Compile Include="Repositories\UsuarioRepository.cs" />
+    <Compile Include="Repositories\UsuarioRoleRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ToLearningCloud.Domain\ToLearningCloud.Domain.csproj">

@@ -1,12 +1,89 @@
-﻿<ul id="top-menu" class="nav navbar-nav navbar-right">
-    <li class="dropdown">
-        <a class="dropdown-toggle count-info" data-hover="dropdown" data-toggle="dropdown" href="#" id="settingsLink">
-            <i class="fa fa-cog">&nbsp;</i>
-            <i class="fa fa-angle-down"></i>
-        </a>
-        <ul class="dropdown-menu dropdown-user">
-            <li><a href="@Url.Action("Index", "Panel", new { Area = "Admin" })"><i class="fa fa-cogs">&nbsp;&nbsp;</i>Painel Administrativo</a></li>
-        </ul>
-    </li>
+﻿@using Microsoft.AspNet.Identity
+@*@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+    @Html.AntiForgeryToken()
 
-</ul>
+    <ul class="nav navbar-nav navbar-right">
+        <li>
+            @Html.ActionLink("Olá " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+        </li>
+        <li><a href="javascript:document.getElementById('logoutForm').submit()">Sair</a></li>
+    </ul>
+    }
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right">
+        <li>@Html.ActionLink("Criar Conta", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+        <li>@Html.ActionLink("Login", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+    </ul>
+}*@
+
+@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+        @Html.AntiForgeryToken()
+    }
+
+    <ul id="top-menu" class="nav navbar-nav navbar-right">
+        <li><a href="#" id="mu-search-icon"><i class="fa fa-search"></i></a></li>
+        <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href='#' id="userLink">
+                @*FullName FirstName Surname *@
+                <i class="fa fa-user">&nbsp;&nbsp;</i>@User.Identity.GetUserName()@*@User.GetInfoUser("FullName")*@ <i class="fa fa-angle-down"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-user">
+                <li>
+                    <div class="text-center">
+                        <span class="">Entrou como:</span>
+                        <span class="user-name"><small>@User.Identity.Name</small></span>
+                    </div>
+                </li>
+                <li class="divider"></li>
+                <li>
+                    <a href="@Url.Action("Index", "Manage", new { Area = "" })">
+                        <i class="fa fa-id-card-o">&nbsp;&nbsp;</i>Minha Conta
+                    </a>
+                </li>
+                <li>
+                    <a href="@Url.Action("ChangePassword", "Manage", new { Area = "" })">
+                        <i class="fa fa-cogs">&nbsp;&nbsp;</i>Alterar Senha
+                    </a>
+                </li>
+
+                <li class="divider"></li>
+                <li>
+                    <a href="javascript:document.getElementById('logoutForm').submit()">
+                        <i class="fa fa-sign-out">&nbsp;&nbsp;</i>Sair
+                    </a>
+                </li>
+            </ul>
+        </li>
+        @if (User.IsInRole("Admin"))
+        {
+            <li class="dropdown">
+                <a class="dropdown-toggle count-info" data-hover="dropdown" data-toggle="dropdown" href="#" id="settingsLink">
+                    <i class="fa fa-cog">&nbsp;</i>
+                    <i class="fa fa-angle-down"></i>
+                </a>
+                <ul class="dropdown-menu dropdown-user">
+                    <li><a href="@Url.Action("Index", "Panel", new { Area = "Admin" })"><i class="fa fa-cogs">&nbsp;&nbsp;</i>Painel Administrativo</a></li>
+                </ul>
+            </li>
+        }
+
+    </ul>
+
+}
+else
+{
+    <ul id="top-menu" class="nav navbar-nav navbar-right">
+        <li><a href="#" id="mu-search-icon"><i class="fa fa-search"></i></a></li>
+        <li><a href="@Url.Action("Login", "Account", new { Area = "" })"><i class="fa fa-sign-in">&nbsp;&nbsp;</i>Entrar</a></li>
+        <li><a href="@Url.Action("Register", "Account", new { Area = "" })"><i class="fa fa-user-plus">&nbsp;&nbsp;</i>Cadastrar</a></li>
+    </ul>
+
+}

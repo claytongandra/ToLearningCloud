@@ -9,7 +9,7 @@ namespace ToLearningCloud.Domain.Interfaces.Repositories
 {
     public interface IAssinaturaNivelRepository : IRepositoryBase<AssinaturaNivel>
     {
-        IEnumerable<AssinaturaNivel> GetByStatus(string status);
+        //////IEnumerable<AssinaturaNivel> GetByStatus(string status);
     }
 
 }

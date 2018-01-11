@@ -46,10 +46,16 @@
     <Compile Include="Interfaces\IAppServiceBase.cs" />
     <Compile Include="Interfaces\IAssinaturaNivelAppService.cs" />
     <Compile Include="Interfaces\IAulaAppService.cs" />
+    <Compile Include="Interfaces\IRoleAppService.cs" />
+    <Compile Include="Interfaces\IUsuarioAcessoAppService.cs" />
+    <Compile Include="Interfaces\IUsuarioRoleAppService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AppServiceBase.cs" />
     <Compile Include="Services\AssinaturaNivelAppService.cs" />
     <Compile Include="Services\AulaAppService.cs" />
+    <Compile Include="Services\RoleAppService.cs" />
+    <Compile Include="Services\UsuarioAcessoAppService.cs" />
+    <Compile Include="Services\UsuarioRoleAppService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ToLearningCloud.Domain\ToLearningCloud.Domain.csproj">

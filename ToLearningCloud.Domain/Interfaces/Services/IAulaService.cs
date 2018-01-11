@@ -5,6 +5,6 @@ namespace ToLearningCloud.Domain.Interfaces.Services
 {
     public interface IAulaService : IServiceBase<Aula>
     {
-        IEnumerable<Aula> GetByStatus(string status);
+        //////IEnumerable<Aula> GetByStatus(string status);
     }
 }

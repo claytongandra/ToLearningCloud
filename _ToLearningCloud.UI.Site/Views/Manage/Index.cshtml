@@ -1,0 +1,175 @@
+﻿@model ToLearningCloud.Infra.CrossCutting.Identity.ViewModels.ManageViewModels.IndexViewModel
+@using ToLearningCloud.Infra.CrossCutting.Identity.Configuration;
+
+@{
+    ViewBag.Title = "Gerenciar Conta";
+
+    int _status = ViewBag.Status;
+}
+
+<h2>@ViewBag.Title</h2>
+
+@if (!string.IsNullOrEmpty(ViewBag.StatusMessage))
+{
+    if (_status < 0)
+    {
+        <div class="alert alert-danger alert-dismissible fade in" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Fechar">
+                <span aria-hidden="true">×</span>
+            </button>
+            <h5><strong>@ViewBag.StatusMessage</strong></h5>
+        </div>
+
+    }
+    else if (_status > 0)
+    {
+        <div class="alert alert-warning alert-dismissible fade in" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Fechar">
+                <span aria-hidden="true">×</span>
+            </button>
+            <h5><strong>@ViewBag.StatusMessage</strong></h5>
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-success alert-dismissible fade in" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Fechar">
+                <span aria-hidden="true">×</span>
+            </button>
+            <h5><strong>@ViewBag.StatusMessage</strong></h5>
+        </div>
+    }
+}
+<table class="table table-hover">
+    <tbody>
+        <tr>
+            <th scope="row">Usuário:</th>
+            <td><span style="padding:5px 15px;" class="badge badge-default">@User.Identity.Name</span></td>
+            <td><a href="@Url.Action("EditUserName","Account", new { Id = @User.GetInfoUser("UserAccessId") })" class="btn btn-default btn-labeled disabled"><span class="btn-label"><i class="fa fa fa-user">&nbsp;&nbsp;</i></span><span class="btn-label-text">Alterar Usúario</span></a></td>
+        </tr>
+        <tr>
+            <th scope="row">Senha:</th>
+            @if (Model.HasPassword)
+            {
+                <td><span class="badge badge-default" style="padding:6px 5px 0 5px;"><text class="text-center" style="font-size:13pt;">* * * * * * * * * * * *</text></span></td>
+                <td><a href="@Url.Action("ChangePassword")" class="btn btn-default btn-labeled"><span class="btn-label"><i class="fa fa-key">&nbsp;&nbsp;</i></span><span class="btn-label-text">Trocar Senha</span></a></td>
+            }
+            else
+            {
+                <td>Não foi definida uma senha para conta local.</td>
+                <td><a href="@Url.Action("SetPassword")" class="btn btn-default btn-labeled"><span class="btn-label"><i class="fa fa-key">&nbsp;&nbsp;</i></span><span class="btn-label-text">Definir Senha para Conta Local</span></a></td>
+            }
+        </tr>
+        <tr>
+            <th scope="row">Logins Externos:</th>
+            <td>Logins Sociais: <span style="padding:5px 15px;" class="badge badge-default @(Model.Logins.Count > 0 ? "badge-info": "badge-warning")">@Model.Logins.Count</span></td>
+            <td><a href="@Url.Action("ManageLogins")" class="btn btn-default btn-labeled"><span class="btn-label"><i class="fa fa-cogs">&nbsp;&nbsp;</i></span><span class="btn-label-text">Gerenciar Logins</span></a></td>
+        </tr>
+        <tr>
+            <th scope="row">Número de celular:</th>
+            @if (Model.PhoneNumber != null)
+            {
+                <td><span style="padding:5px 15px;" class="badge badge-default">@Model.PhoneNumber</span></td>
+                <td>
+                    <div style="max-width:137px; float:left; padding:0 2px 0 0; border:1px none #ff0000;">
+                        <a href="@Url.Action("AddPhoneNumber")" class="btn btn-default btn-labeled"><span class="btn-label"><i class="fa fa-exchange">&nbsp;&nbsp;</i></span><span class="btn-label-textmini">Trocar</span></a>
+                    </div>
+                    <div style="max-width:137px; float:left; padding:0 0 0 2px;">
+                        <a href="@Url.Action("RemovePhoneNumber")" class="btn btn-danger btn-labeled"><span class="btn-label"><i class="fa fa-trash-o">&nbsp;&nbsp;</i></span><span class="btn-label-textmini">Remover</span></a>
+                    </div>
+                </td>
+            }
+            else
+            {
+                <td>
+                    Não Informado.
+                </td>
+                <td><a href="@Url.Action("AddPhoneNumber")" class="btn btn-default btn-labeled"><span class="btn-label"><i class="fa fa-mobile">&nbsp;&nbsp;</i></span><span class="btn-label-text">Adicionar Celular</span></a></td>
+            }
+        </tr>
+        <tr>
+            <th scope="row">E-mail:</th>
+
+            @if (!Model.EmailConfirmed)
+            {
+                <td>
+                    E-mail: <span style="padding:5px 15px;" class="badge badge-default">@Model.Email</span> Não confirmado.
+                </td>
+                <td>
+                    <a href="@Url.Action("DisplayEmail","Account", new { Id = @User.GetInfoUser("UserAccessId") })" class="btn btn-success btn-labeled"><span class="btn-label"><i class="fa fa-envelope-o">&nbsp;&nbsp;</i></span><span class="btn-label-text">Confirmar E-mail</span></a>
+                </td>
+            }
+            else
+            {
+                <td><span style="padding:5px 15px;" class="badge badge-default">@Model.Email</span></td>
+                <td>
+                    <a href="@Url.Action("EditEmail","Account", new { Id = @User.GetInfoUser("UserAccessId") })" class="btn btn-default btn-labeled disabled"><span class="btn-label"><i class="fa fa-envelope-open-o">&nbsp;&nbsp;</i></span><span class="btn-label-text">Alterar E-mail</span></a>
+                </td>
+            }
+        </tr>
+
+        @if (Model.EmailConfirmed || Model.PhoneNumber != null)
+            {
+            <tr>
+                <th scope="row">Autenticação de dois fatores:</th>
+                @if (Model.TwoFactor)
+                {
+                    <td>Two Factor está habilitado.</td>
+                    using (Html.BeginForm("DisableTwoFactorAuthentication", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        <td>
+                            <button type="submit" class="btn btn-default btn-labeled"><span class="btn-label"><i class="fa fa-toggle-off">&nbsp;&nbsp;</i></span><span class="btn-label-text">Desabilitar Two Factor</span></button>
+                        </td>
+                    }
+                }
+                else
+                {
+                    <td>Two Factor NÃO está habilitado.</td>
+                    using (Html.BeginForm("EnableTwoFactorAuthentication", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        <td>
+                            <button type="submit" class="btn btn-default btn-labeled"><span class="btn-label"><i class="fa fa-toggle-on">&nbsp;&nbsp;</i></span><span class="btn-label-text">Habilitar Two Factor</span></button>
+                        </td>
+                    }
+                }
+            </tr>
+            <tr>
+                <th scope="row"></th>
+                @if (Model.BrowserRemembered)
+                {
+                    <td>O browser será lembrado para Two Factor.</td>
+                    using (Html.BeginForm("ForgetBrowser", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        <td>
+                            <button type="submit" class="btn btn-default btn-labeled"><span class="btn-label"><i class="fa fa-toggle-off">&nbsp;&nbsp;</i></span><span class="btn-label-text">Esquecer Browser</span></button>
+                        </td>
+                    }
+                }
+                else
+                {
+                    <td>O browser NÃO será lembrado para Two Factor.</td>
+                    using (Html.BeginForm("RememberBrowser", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        <td>
+                            <button type="submit" class="btn btn-default btn-labeled"><span class="btn-label"><i class="fa fa-toggle-on">&nbsp;&nbsp;</i></span><span class="btn-label-text">Lembrar Browser</span></button>
+                        </td>
+                    }
+                }
+            </tr>
+        }
+        else
+        {
+            <tr>
+                <th scope="row">Autenticação de dois fatores:</th>
+                <td colspan="2">
+                    <i style="color: #ffd800;text-shadow: 1px 1px 5px #292929; font-size: 1.2em;" class="fa fa-exclamation-triangle">&nbsp;&nbsp;</i>
+                    <span class="text-warning">Para habilitar a autenticação de de dois fatores adicione um <strong>número de celular</strong> ou <strong>confirme seu e-mail</strong>.</span>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

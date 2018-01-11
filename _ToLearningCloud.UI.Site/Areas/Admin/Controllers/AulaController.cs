@@ -12,6 +12,7 @@ namespace ToLearningCloud.UI.Site.Areas.Admin.Controllers
 {
     [RouteArea("Admin")]
     [RoutePrefix("Aula")]
+    [Authorize]
     public class AulaController : Controller
     {
         private readonly IAulaAppService _aulaApp;

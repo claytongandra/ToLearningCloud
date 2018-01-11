@@ -7,12 +7,12 @@ namespace ToLearningCloud.Infra.Data.Repositories
 {
     public class AssinaturaNivelRepository : RepositoryBase<AssinaturaNivel>, IAssinaturaNivelRepository
     {
-        public IEnumerable<AssinaturaNivel> GetByStatus(string status)
-        {
-            string[] arrayStatus = status.Split(',');
+        //////public IEnumerable<AssinaturaNivel> GetByStatus(string status)
+        //////{
+        //////    string[] arrayStatus = status.Split(',');
 
-            return ContextDB.Set<AssinaturaNivel>().Where(a => arrayStatus.Contains(a.AssinaturaNivel_Status)).ToList();
-        }
+        //////    return ContextDB.Set<AssinaturaNivel>().Where(a => arrayStatus.Contains(a.AssinaturaNivel_Status)).ToList();
+        //////}
     }
 }
 

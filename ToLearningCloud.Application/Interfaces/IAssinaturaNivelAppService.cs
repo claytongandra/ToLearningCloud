@@ -5,6 +5,6 @@ namespace ToLearningCloud.Application.Interfaces
 {
     public interface IAssinaturaNivelAppService : IAppServiceBase<AssinaturaNivel>
     {
-        IEnumerable<AssinaturaNivel> GetByStatusAssinaturaNivel(string status);
+        //////IEnumerable<AssinaturaNivel> GetByStatusAssinaturaNivel(string status);
     }
 }

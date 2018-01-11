@@ -13,55 +13,55 @@ namespace ToLearningCloud.Infra.Data.Repositories
     public class RepositoryBase<TEntity> : IDisposable, IRepositoryBase<TEntity> where TEntity : class
 
     {
-        protected DbContext ContextDB { get; private set; }
+        //////protected DbContext ContextDB { get; private set; }
 
-        public RepositoryBase()
-        {
-            var contextManager = ServiceLocator.Current.GetInstance<ContextManager<ToLearningCloudContext>>();
-            ContextDB = contextManager.GetContext;
-        }
+        //////public RepositoryBase()
+        //////{
+        //////    var contextManager = ServiceLocator.Current.GetInstance<ContextManager<ToLearningCloudContext>>();
+        //////    ContextDB = contextManager.GetContext;
+        //////}
 
 
-        public void Add(TEntity obj)
-        {
-            ContextDB.Set<TEntity>().Add(obj);
-        }
+        //////public void Add(TEntity obj)
+        //////{
+        //////    ContextDB.Set<TEntity>().Add(obj);
+        //////}
 
-        public IEnumerable<TEntity> GetAll()
-        {
-            return ContextDB.Set<TEntity>().ToList(); // verificar o AsNoTracking().ToList();
-        }
+        //////public IEnumerable<TEntity> GetAll()
+        //////{
+        //////    return ContextDB.Set<TEntity>().ToList(); // verificar o AsNoTracking().ToList();
+        //////}
 
-        public TEntity GetById(int id)
-        {
-            return ContextDB.Set<TEntity>().Find(id);
-        }
+        //////public TEntity GetById(int id)
+        //////{
+        //////    return ContextDB.Set<TEntity>().Find(id);
+        //////}
 
-        public TEntity GetByIdGuide(string id)
-        {
-            return ContextDB.Set<TEntity>().Find(id);
-        }
+        //////public TEntity GetByIdGuide(string id)
+        //////{
+        //////    return ContextDB.Set<TEntity>().Find(id);
+        //////}
 
-        public void Remove(TEntity obj)
-        {
-            ContextDB.Set<TEntity>().Remove(obj);
-        }
+        //////public void Remove(TEntity obj)
+        //////{
+        //////    ContextDB.Set<TEntity>().Remove(obj);
+        //////}
 
-        public void Update(TEntity obj)
-        {
-            ContextDB.Entry(obj).State = EntityState.Modified;
-        }
+        //////public void Update(TEntity obj)
+        //////{
+        //////    ContextDB.Entry(obj).State = EntityState.Modified;
+        //////}
 
-        //public void RemoveById(int id)
-        //{
-        //    var obj = GetById(id);
-        //    Remove(obj);
-        //}
+        ////////public void RemoveById(int id)
+        ////////{
+        ////////    var obj = GetById(id);
+        ////////    Remove(obj);
+        ////////}
 
         public void Dispose()
         {
-            ContextDB.Dispose();
+            //////    ContextDB.Dispose();
         }
 
-    }
+}
 }

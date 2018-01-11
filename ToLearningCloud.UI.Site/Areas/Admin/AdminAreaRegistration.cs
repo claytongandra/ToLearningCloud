@@ -19,6 +19,7 @@ namespace ToLearningCloud.UI.Site.Areas.Admin
                 "Admin/{controller}/{action}/{id}",
                 new { controller = "Panel", action = "Index", id = UrlParameter.Optional },
                 new[] { "ToLearningCloud.UI.Site.Areas.Admin.Controllers" }
+
             );
         }
     }

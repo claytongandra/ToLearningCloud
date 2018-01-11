@@ -1,0 +1,39 @@
+﻿@model ToLearningCloud.Infra.CrossCutting.Identity.ViewModels.ManageViewModels.VerifyPhoneNumberViewModel
+
+@{
+    ViewBag.Title = "Verificar número de celular";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm("VerifyPhoneNumber", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        @Html.Hidden("UsuarioAcesso_PhoneNumber", @Model.UsuarioAcesso_PhoneNumber)
+        @Html.ValidationMessageFor(model => model.UsuarioAcesso_PhoneNumber, "", new { @class = "text-danger" })
+        <h4>Digite seu código de segurança.</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Code, htmlAttributes: new { @class = "control-label col-md-4" })
+            <div class="col-md-8">
+                @Html.EditorFor(model => model.Code, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Code, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-4 col-md-8">
+                <input type="submit" value="Enviar" class="btn btn-default" />
+                <h5>@ViewBag.Status &nbsp;<strong>@ViewBag.CodigoAcesso</strong></h5>
+            </div>
+        </div>
+    </div>
+
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

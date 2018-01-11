@@ -5,7 +5,7 @@ namespace ToLearningCloud.Domain.Interfaces.Repositories
 {
     public interface IAulaRepository : IRepositoryBase<Aula>
     {
-        IEnumerable<Aula> GetByStatus(string status);
+        //////IEnumerable<Aula> GetByStatus(string status);
     }
 
 }
